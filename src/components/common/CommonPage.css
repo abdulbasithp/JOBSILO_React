@@ -1,0 +1,63 @@
+
+.hero-1-heading {
+    padding-top: 4rem;
+    padding-left: 2rem;
+    font-size: 4rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-bottom: 1rem;
+    padding-right: 1rem;
+    font-weight: bold;
+}
+.hero-1-desc {
+    padding-top: 1rem;
+    padding-left: 2rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    height: fit-content;
+}
+
+.hero-2-heading {
+    font-size: 4rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-bottom: 1rem;
+    padding-right: 1rem;
+    font-weight: bold;
+    padding-left: 3rem;
+}
+.hero2img {
+    width: 85%;
+    margin-left: 2rem;
+  
+}
+
+.hire-button {
+    margin-top: 1rem;
+    height: 2.5rem;
+    width: 12rem;
+    background-color: rgb(148, 68, 223);
+    border-style: none;
+    border-radius: 7px;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+}
+.why-heading {
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    color: rgb(153, 87, 214);
+    font-size: 1.3rem;
+}
+.hero3-desc {
+    font-weight: bold;
+    font-size: 1.5rem;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+
+.hero3-carousel div img {
+    width: 16rem;
+   
+
+}

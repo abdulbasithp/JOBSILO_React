@@ -1,0 +1,44 @@
+.create-link {
+    margin-top: 15px;
+    text-decoration: none;
+    color: #3160e4;
+    font-size: medium;
+    cursor: pointer;
+    font-weight: 800;
+}
+.create-link:hover {
+    color: #505155;
+}
+.recruiter-login{
+    background-image: url("../../assets/images/recruiter-login.jpg");
+    background-position:right;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height: 600px;
+    background-color: #cccccc;
+    position: relative;
+}
+.login-form {
+    margin-top: 5rem;
+   
+}
+.login-form input, .login-form button{
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.css-input {
+    padding: 12px;
+    font-size: 0.8rem;
+    border-width: 2px;
+    border-color: #3f91f0;
+    background-color: #ffffff;
+    color: #363b35;
+    border-style: solid;
+    border-radius: 12px;
+    box-shadow: 0px 0px 14px rgba(66,66,66,.38);
+    text-shadow: 4px 2px 19px rgba(66,66,66,.75);
+}
+.css-input:focus {
+    outline:none;
+}

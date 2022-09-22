@@ -1,0 +1,47 @@
+
+.logo {
+    width: 168px;
+    height: 58px;
+}
+.avatar-recruiter {
+    background-color: rgb(135, 152, 152);
+    border-radius: 26px;
+    border: 3px solid rgb(121, 177, 107);
+}
+.avatar-image {
+    border-radius: 23px;
+}
+.avatar-recruiter:hover {
+    border: 3px solid rgb(59, 59, 54);
+}
+
+.nav-link{
+    
+    color: rgb(81, 74, 74);
+    margin-right: auto;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: small;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+li .active{
+    background-color: rgb(187, 216, 179);
+}
+.nav-link:hover {
+    cursor: pointer;
+    color: #705a5a;
+    background-color: #dee0f4;
+    /* border-color: rgb(111, 193, 29); */
+    /* border-bottom: 3px solid; */
+   
+}
+
+.navbar-nav .nav-link.active {
+    
+    color: rgb(246 246 246);
+    background-color: #726f6b;
+    
+}
+

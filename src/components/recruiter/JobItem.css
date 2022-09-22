@@ -1,0 +1,27 @@
+.job-post {
+    
+    background-color: #f2f2f2;
+    padding: 20px;
+    height: 180px;
+    margin: 15px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+}
+.job-post:hover{
+    background-color: #bce0e6;
+}
+.job-post:focus{
+    background-color: #e4f1f3;
+}
+.job-post-header {
+    display: flex;
+    border-bottom: 1px solid rgb(181, 173, 173);
+
+}
+.job-post-header-location {
+    font-size: 11px;
+    margin-top: 6px;
+}
+.job-active {
+    background-color: #b6cddd;
+}

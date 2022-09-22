@@ -1,0 +1,48 @@
+ .outer-container{
+    height: 90vh;
+    background: fixed;
+    background-color: aliceblue;
+}
+.seeker-form-container {
+    margin-left: auto;
+    margin-right: auto;
+    height: 450px;
+    width: 300px;
+    background-color: rgb(178, 249, 157);
+    padding: 30px;
+    border-radius: 15px;
+}
+.seeker-form-container h3{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: large;
+    font-weight: bolder;
+    color: rgb(41, 36, 36);
+}
+.seeker-form-container input {
+    border-radius: 15px;
+    padding: 7px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    font-size: small;
+    border: 1px wheat solid ;
+}
+.seeker-form-container input:focus {
+   outline-color: aqua;
+}
+.seeker-form-container button{
+    margin-top: 10px;
+    width: 60%;
+    padding: 5px;
+    border-radius: 25px;
+}
+.back-button {
+    border: 0.5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px 0px #333333;
+}
+.back-button:active{
+    transform: scale(0.95);
+    box-shadow: 0px 0px 5px 0px #333333;
+}
