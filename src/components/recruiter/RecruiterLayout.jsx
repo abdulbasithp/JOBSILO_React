@@ -24,7 +24,7 @@ function RecruiterLayout() {
         const recruiterId = user.profile_id
         getRecruiterJobPosts(recruiterId).then(
           (res) => {
-            console.log(res.data, 'useEffect');
+            // console.log(res.data, 'useEffect');
             setJobPosts(res.data);
             setJobClicked(res.data[0])
           })

@@ -1,0 +1,27 @@
+.company-detail-container {
+    margin:15px;
+    padding: 50px;
+    /* background-color: antiquewhite; */
+}
+.dropdown-center button{
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+    border: none;
+}
+.dropdown-center button div {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.company-search {
+    outline: none;
+    margin-left: 7px;
+    margin-right: 10px;
+}
+
+/* create company form */
+
+.create-company-form-row {
+    background-color: rgb(234, 234, 234);
+    padding: 1rem;
+    border-radius: 10px;
+}

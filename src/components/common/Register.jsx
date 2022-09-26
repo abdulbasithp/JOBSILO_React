@@ -50,7 +50,8 @@ function Register() {
         
       }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
             setLoading(true)
             const passwordRegex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
             const emialRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i ;
@@ -107,6 +108,7 @@ function Register() {
             <button className='ms-5 mt-4 back-button' onClick={()=>navigate(-1)}><FaAngleDoubleLeft/></button>
                 <div className="h-100 d-flex  justify-content-center">
                     <div className='seeker-form-container text-center' >
+                        <form action="" onSubmit={handleSubmit}>
                         <h3 className='mb-2'>Create Jobsilo Account</h3>
                         <br />  <input 
                                     type="text"  
@@ -136,11 +138,13 @@ function Register() {
                                     type="password"  
                                     name='password' 
                                     value={password} 
+                                    autoComplete="off"
                                     onChange={handleChange} 
                                     placeholder="Password" />
                         <br />  <input 
                                     type="password"  
-                                    name='confPassword' 
+                                    name='confPassword'
+                                    autoComplete='off' 
                                     value={confPassword} 
                                     onChange={(e)=>setConfPassword(e.target.value)} 
                                     placeholder="Confirm Password" />
@@ -153,13 +157,14 @@ function Register() {
                                      <span className='ms-2'>if you want to hire</span>
                         <br /> {<button
                                     className='btn btn-md btn-info' 
-                                    onClick={handleSubmit} 
+                                    type='submit'
                                     disabled={loading}> 
                                     {loading && (<span className="spinner-border spinner-border-sm me-1"></span>
                                      )}
                                     <span >Sign in</span> 
                                 </button> 
-                }                         
+                }          
+                </form>               
                     </div>
                 </div>
 

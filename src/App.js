@@ -11,6 +11,9 @@ import SeekerHome from './components/seeker/SeekerHome';
 import RecruiterLayout from './components/recruiter/RecruiterLayout';
 import { ToastContainer } from 'react-toastify';
 import SheduleLayout from './components/recruiter/SheduleLayout';
+import Profile from './components/recruiter/Profile';
+import { UserProvider } from './context/UserContext';
+import CompanyDetailForm from './components/recruiter/CompanyDetailForm';
 
 
 function App() {
@@ -21,28 +24,32 @@ function App() {
 
       <Router>
         <AuthProvider>
-          <NavBar />
-          <Routes>
-            {/* public routes */}
-            <Route path='/' element={<CommonPage />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
+          <UserProvider>
+            <NavBar />
+            <Routes>
+              {/* public routes */}
+              <Route path='/' element={<CommonPage />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
 
-            {/* protercted routes */}
-            <Route path='seeker'>
-              <Route path='home' element={<SeekerHome />} />
-            </Route>
+              {/* protercted routes */}
 
-            <Route path='recruiter'  >
-              <Route path='home' element={<RecruiterLayout />} >
-                {/* <Route path=':id' element={<JobDetail />} /> */}
+              <Route path='seeker'>
+                <Route path='home' element={<SeekerHome />} />
               </Route>
-              <Route path='shedules' element={<SheduleLayout />}/>
-            </Route>
 
-            {/* not found route */}
-            <Route path='*' element={<PageNotFound />} />
-          </Routes>
+              <Route path='recruiter'  >
+                <Route path='home' element={<RecruiterLayout />} />
+                <Route path='profile' element={<Profile />} />
+                <Route path='shedules' element={<SheduleLayout />} />
+                <Route path=':profileId/add_company' element={<CompanyDetailForm/>}/>
+              </Route>
+
+              {/* not found route */}
+              <Route path='*' element={<PageNotFound />} />
+
+            </Routes>
+          </UserProvider>
         </AuthProvider>
       </Router>
       <ToastContainer

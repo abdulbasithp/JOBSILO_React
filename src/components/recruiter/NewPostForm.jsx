@@ -7,6 +7,7 @@ function NewPostForm({recruiterId}) {
         recruiter_id:recruiterId,
         qualification:[],
         roles:'',
+        
 
 
     })
@@ -19,7 +20,7 @@ function NewPostForm({recruiterId}) {
                      <label htmlFor='job-title' className="col-form-label col-form-label-sm">Job Title<span style={{"color":"red"}} >*</span></label>
                      <input type="text" className="form-control form-control-sm" id="job-title" placeholder=""/>
                 </div>
-                
+
             </div>
 
         </>

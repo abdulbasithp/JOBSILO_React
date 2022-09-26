@@ -1,0 +1,49 @@
+.profile-container {
+    max-width: 80vw;
+    background-color: rgb(238, 238, 238);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 25px;
+    margin-top: 10px;
+}
+
+.profile-container .row {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: rgb(254, 254, 254); */
+}
+.profile-image {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+    border: 2px rgb(85, 246, 56) solid ;
+}
+.basic-data-edit-icon {
+    cursor: pointer;
+}
+/* accordion company details */
+.first-accordion {
+    max-width: 80vw;
+    margin-top: 25px;
+    border-radius: 10px;
+}
+#heading-company button {
+    background-color: rgb(236, 238, 237);
+    border-radius: 11px;
+}
+
+/* no company data */
+.no-company-data {
+    margin-top: 50px;
+}
+.add-company-detail-button {
+    background-color: rgb(238, 205, 19);
+    color: rgb(16, 14, 14);
+    border-radius: 5px;
+    border: 0ch;
+    padding: 7px;
+}
+.add-company-detail-button:hover {
+    background-color: rgb(214, 185, 20);
+}

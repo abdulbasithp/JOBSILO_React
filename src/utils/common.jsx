@@ -1,6 +1,6 @@
 
 export const getCurrentUser = () => {
-    const currentUser = localStorage.getItem('user')
+    const currentUser = JSON.parse(localStorage.getItem('user'))
     if (currentUser){
         return currentUser
     }
