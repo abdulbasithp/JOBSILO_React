@@ -22,7 +22,7 @@ function CompanyDetailForm() {
     const [addCompanyDetailFormData, setAddCompanyDetailFormData] = useState({
         company_name: '',
         category: '',
-        company_logo: '',
+        company_logo: null,
         started_date: '',
         about: '',
         founder: '',
@@ -129,6 +129,7 @@ function CompanyDetailForm() {
                 {isAddComapnyDetail && (
                     <>
                         <CreateCompanyDetail
+                            setIsAddCompanyDetail = {setIsAddCompanyDetail}
                             addCompanyDetailFormData={addCompanyDetailFormData}
                             setAddCompanyDetailFormData={setAddCompanyDetailFormData} />
                     </>

@@ -14,7 +14,7 @@ function CompanyDetail({ selectedCompany }) {
           <div className="container text-center justify-content-center">
             <div className='container company-data-container d-flex justify-content-between '>
               <div className='d-flex align-items-center'>
-                <img src={selectedCompany.company_logo} className="m-5" width="70px" height="70px" alt="" />
+                <img src={selectedCompany.company_logo} className="m-5" width="70px"  alt="" />
                 <h3 className='fw-lighter '> {selectedCompany.company_name}</h3>
               </div>
               <div className="">

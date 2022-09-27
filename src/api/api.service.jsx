@@ -60,3 +60,52 @@ export const getCompanyCategory = async () =>{
         return error
     }
 }
+
+
+// create company data 
+
+export const createCompany = async (data) => {
+    try {
+        let response = await axios.post(`${baseUrl}/company/`,data, {
+            headers:{
+                'Content-Type': 'multipart/form-data'
+            },
+        })
+        return response
+    } catch (error) {
+        return error
+    }
+}
+
+// get education levels
+
+export const getEducationLevels = async () => {
+    try {
+        let response = await axios.get(`${baseUrl}/education_level/`)
+        return response
+    } catch (error) {
+        return error
+    }
+}
+
+// get all education Courses with education level id
+
+export const getEducationCourses = async (levelId) => {
+    try {
+        let response = await axios.get(`${baseUrl}/education_courses/${levelId}/`)
+        return response
+    } catch (error) {
+        return error
+    }
+}
+
+// get all education specialisations with education course id
+
+export const getEducationSpecialisations = async (courseId) => {
+    try {
+    let response = await axios.get(`${baseUrl}/education_specials/${courseId}/`)
+    return response
+    } catch (error) {
+        return error
+    }
+}

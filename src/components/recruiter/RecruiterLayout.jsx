@@ -78,7 +78,24 @@ function RecruiterLayout() {
             <div className='recruiter-home-main'>
               {newPost
                 ? <NewPostForm recruiterId={user.profile_id} />
-                : <JobDetail job={jobClicked} />
+                : jobPosts && jobPosts.length !== 0
+                  ? <JobDetail job={jobClicked} />
+                  : (
+                    <>
+                      <div className=" row align-items-center justify-content-center">
+                        <div className=' col text-center'>
+                          <h2>No job posts found.
+                          </h2>
+                          <p>
+                            <span onClick={() => setNewPost(true)} style={{ "color": "blue", "cursor": "pointer" }}><u>Click Here</u></span> <span> Create New Job Post</span>
+                          </p>
+                        </div>
+
+
+                      </div>
+
+                    </>
+                  )
               }
             </div>
           </div>

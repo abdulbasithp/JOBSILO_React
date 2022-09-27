@@ -161,7 +161,7 @@ function Register() {
                                     disabled={loading}> 
                                     {loading && (<span className="spinner-border spinner-border-sm me-1"></span>
                                      )}
-                                    <span >Sign in</span> 
+                                    <span >Register</span> 
                                 </button> 
                 }          
                 </form>               

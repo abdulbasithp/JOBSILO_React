@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
-import { getCompanyCategory } from '../../api/api.service'
+import { createCompany, getCompanyCategory } from '../../api/api.service'
 
-function CreateCompanyDetail({ addCompanyDetailFormData, setAddCompanyDetailFormData }) {
+function CreateCompanyDetail({ addCompanyDetailFormData, setAddCompanyDetailFormData, setIsAddCompanyDetail }) {
 
     const [companyCategory, setCompanyCategory] = useState([])
-   
+
     const [logoFile, setLogoFile] = useState(null)
     const [logoUrl, setLogoUrl] = useState(null)
 
     const [ceoFile, setCeoFile] = useState(null)
     const [ceoImageUrl, setCeoImageUrl] = useState(null)
 
-    const [categoryNameSelected, setCategoryNameSelected] = useState(null)
+    const [categoryNameSelected, setCategoryNameSelected] = useState('')
 
-    const imageMimeType = /\/(?:jpg|jpeg|gif|png)/g;
+
+
+    const imageMimeType = /\/(?:jpg|jpeg|gif|png|webp)/g;
 
     useEffect(() => {
         getCompanyCategory()
@@ -28,82 +30,128 @@ function CreateCompanyDetail({ addCompanyDetailFormData, setAddCompanyDetailForm
     }, [])
 
     const handleFormFieldChange = (event) => {
-        
+
         const name = event.target.name
-        setAddCompanyDetailFormData({
-            ...addCompanyDetailFormData,
-            [name]: event.target.value,
-        })
+        if (name === 'category'){
+            setAddCompanyDetailFormData({
+                ...addCompanyDetailFormData,
+                [name]: Number(event.target.value),
+            })
+        }else{
+            setAddCompanyDetailFormData({
+                ...addCompanyDetailFormData,
+                [name]: event.target.value,
+            })
+        }
+        
     }
 
-    const handleImageUpload = (e)=>{
+    const handleImageUpload = (e) => {
         const file = e.target.files[0]
-        if (file && !file.type.match(imageMimeType)){
-            toast.error('image type not supported, only jpg,jpeg,png and webp',{autoClose:1400})
-        }else{
-            if(e.target.name === 'company_logo'){
+        if (file && !file.type.match(imageMimeType)) {
+            toast.error('image type not supported, only jpg,jpeg,png and webp', { autoClose: 1400 })
+        } else {
+            if (e.target.name === 'company_logo') {
                 setLogoFile(file);
-            }else if(e.target.name === 'ceo_image'){
+            } else if (e.target.name === 'ceo_image') {
                 setCeoFile(file)
             }
-            
+
             const name = e.target.name
             setAddCompanyDetailFormData({
                 ...addCompanyDetailFormData,
-                [name]:file,
+                [name]: file,
             })
         }
-       
+
     }
 
-    useEffect(()=>{
-            let logofileReader,isCancel=false ;
-            if(logoFile){
-                
-                logofileReader = new FileReader();
-                logofileReader.onload = (e) => {
-                    const {result} = e.target ;
-                    if(result && !isCancel ){
-                        setLogoUrl(result)
-                    }
+    useEffect(() => {
+        let logofileReader, isCancel = false;
+        if (logoFile) {
+
+            logofileReader = new FileReader();
+            logofileReader.onload = (e) => {
+                const { result } = e.target;
+                if (result && !isCancel) {
+                    setLogoUrl(result)
                 }
-                logofileReader.readAsDataURL(logoFile);
-                
             }
-        return (()=>{
+            logofileReader.readAsDataURL(logoFile);
+
+        }
+        return (() => {
             isCancel = true;
-            if (logofileReader && logofileReader.readyState === 1){
+            if (logofileReader && logofileReader.readyState === 1) {
                 logofileReader.abort();
             }
 
         })
-    },[logoFile])
-    
-    useEffect(()=>{
-            let ceofileReader,isCancel = false ;
-            if(ceoFile){
-                
-                ceofileReader = new FileReader();
-                ceofileReader.onload = (e) => {
-                    const {result} = e.target ;
-                    if(result && !isCancel ){
-                        setCeoImageUrl(result)
-                    }
+    }, [logoFile])
+
+    useEffect(() => {
+        let ceofileReader, isCancel = false;
+        if (ceoFile) {
+
+            ceofileReader = new FileReader();
+            ceofileReader.onload = (e) => {
+                const { result } = e.target;
+                if (result && !isCancel) {
+                    setCeoImageUrl(result)
                 }
-                ceofileReader.readAsDataURL(ceoFile);
-                
             }
-        return (()=>{
+            ceofileReader.readAsDataURL(ceoFile);
+
+        }
+        return (() => {
             isCancel = true;
-            if (ceofileReader && ceofileReader.readyState === 1){
+            if (ceofileReader && ceofileReader.readyState === 1) {
                 ceofileReader.abort();
             }
 
         })
-    },[ceoFile])
+    }, [ceoFile])
 
-    console.log(addCompanyDetailFormData);
+    useEffect(() => {
+        if (addCompanyDetailFormData.category) {
+            companyCategory.forEach((item) => {
+                if (item.id === Number(addCompanyDetailFormData.category)) {
+                    setCategoryNameSelected(item)
+                    console.log(item);
+                }
+            })
 
+        }
+    }, [addCompanyDetailFormData.category])
+
+    const handleSubmit =(e) => {
+        e.preventDefault();
+        createCompany(addCompanyDetailFormData)
+        .then((response)=> {
+            if (response.status === 201){
+                setIsAddCompanyDetail(false);
+                setAddCompanyDetailFormData({
+                    company_name: '',
+                    category: '',
+                    company_logo: null,
+                    started_date: '',
+                    about: '',
+                    founder: '',
+                    ceo_name: '',
+                    ceo_image: '',
+                    head_office_location: '',
+                })
+                toast.success('New company data added successfully..',{autoClose:1500})
+            }
+            else if(response.status === 400){
+                toast.error('There is a problem occurs with data entered. Please check and retry !')
+            }
+        })
+        .catch((error)=> {
+            console.log();
+        })
+    }
+console.log(addCompanyDetailFormData);
     return (
         <>
             <div className="container">
@@ -120,7 +168,7 @@ function CreateCompanyDetail({ addCompanyDetailFormData, setAddCompanyDetailForm
                                     </p>
                                 </div>
                                 <div className="contact">
-                                    <form className="form" encType='multipart/form-data' >
+                                    <form className="form" encType='multipart/form-data' onSubmit={handleSubmit} >
                                         <div className="row g-2">
                                             <div className="form-group col-md-6">
                                                 <label htmlFor="exampleFormControlInput1" className="form-label">Company Name : <span className='text-danger'>*</span></label>
@@ -137,7 +185,7 @@ function CreateCompanyDetail({ addCompanyDetailFormData, setAddCompanyDetailForm
                                                     name="company_logo"
                                                     className="form-control"
                                                     placeholder="Company Logo"
-                                                   
+
                                                     onChange={handleImageUpload}
                                                     required="required" />
                                             </div>
@@ -158,7 +206,7 @@ function CreateCompanyDetail({ addCompanyDetailFormData, setAddCompanyDetailForm
                                                     name="ceo_image"
                                                     className="form-control"
                                                     placeholder="CEO Image"
-                                                   
+                                              
                                                     onChange={handleImageUpload}
                                                     required="required" />
                                             </div>
@@ -166,7 +214,7 @@ function CreateCompanyDetail({ addCompanyDetailFormData, setAddCompanyDetailForm
                                                 <label htmlFor="exampleFormControlInput1" className="form-label">Industry Type : <span className='text-danger'>*</span></label>
                                                 <select className="form-select" name='category'
                                                     aria-label="Default select example"
-                                                    value={addCompanyDetailFormData.category}
+                                                    value={Number(addCompanyDetailFormData.category)}
                                                     onChange={handleFormFieldChange}
                                                     placeholder='select category' required>
                                                     <option >select category </option>
@@ -230,20 +278,44 @@ function CreateCompanyDetail({ addCompanyDetailFormData, setAddCompanyDetailForm
                                 <div className='row'>
                                     {addCompanyDetailFormData && (
                                         <>
-                                            <div className="col">
-                                                <img src={logoUrl && (logoUrl)} width="120px" alt="" />
-                                                <h4>{addCompanyDetailFormData.company_name}</h4>
+                                            <div className='d-flex justify-content-between'>
+                                                <div className="mb-5 text-center">
+                                                    <img className='mb-2 shadow-sm' src={logoUrl && (logoUrl)} width="120px" alt="company_logo.jpg" />
+                                                    <h4>{addCompanyDetailFormData.company_name}</h4>
+                                                </div>
+                                                <div className="mb-2 text-center ">
+                                                    <img className='mb-2 shadow' src={ceoImageUrl && (ceoImageUrl)} width="120px" alt='ceo-image.jpg' />
+                                                    <h5>{addCompanyDetailFormData.ceo_name}</h5>
+                                                </div>
+
                                             </div>
-                                            <div className="col">
-                                                <img src={ceoImageUrl && (ceoImageUrl)} width="130px"  />
-                                                <h5>{addCompanyDetailFormData.ceo_name}</h5>
+                                            <div className='col-lg-12 mb-4'>
+                                                <h6>Industry Type : </h6>
+                                                <h4>{categoryNameSelected && (categoryNameSelected.category_name)}</h4>
+
+                                            </div>
+                                            <div className="col-lg-12 mb-4">
+                                                <h6>Founders :</h6>
+                                                <h4>{addCompanyDetailFormData.founder}</h4>
+                                            </div>
+                                            <div className="col-lg-12 mb-4">
+                                                <h6>Founded Date :</h6>
+                                                <h4>{addCompanyDetailFormData.started_date}</h4>
+                                            </div>
+                                            <div className="col-lg-12 mb-4">
+                                                <h6>Head Office :</h6>
+                                                <h4>{addCompanyDetailFormData.head_office_location}</h4>
+                                            </div>
+                                            <div className="col-lg-12 mb-4">
+                                                <h6>About :</h6>
+                                                <p>{addCompanyDetailFormData.about}</p>
                                             </div>
                                         </>
+
                                     )}
 
 
                                 </div>
-                                ssdf
                             </div>
                         </div>
                     </div>
