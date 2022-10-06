@@ -1,0 +1,14 @@
+/* experience item */
+
+.experience-remove-icon {
+    cursor: pointer;
+}
+
+.experience-remove-icon:hover{
+    color: chocolate;
+    transform: scale(1.5);
+} 
+
+.experience-item-row {
+    font-size: small;
+}

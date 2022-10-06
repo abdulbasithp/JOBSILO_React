@@ -11,7 +11,7 @@ import CreateCompanyDetail from './CreateCompanyDetail';
 
 function CompanyDetailForm() {
     const { user } = useContext(AuthContext)
-    const { userProfile, setUserProfile } = useContext(UserContext)
+    const { userProfile, setUserProfile, setUserCompany } = useContext(UserContext)
 
 
     const [searchWord, setSearchWord] = useState('')
@@ -57,6 +57,7 @@ function CompanyDetailForm() {
                         ...userProfile,
                         company: selectedCompany.id,
                     });
+                    setUserCompany(selectedCompany);
                     toast.success('Company Details added successfully', { autoClose: 1300 })
                     navigate(-1)
 

@@ -13,11 +13,12 @@ function NavBar() {
   const [showDefaultNav, setShowDefaultNav] = useState(true)
   const [showSeekerNav, setShowSeekerNav] = useState(false)
   const [showRecruiterNav, setShowRecruiterNav] = useState(false)
+  
   const navigate = useNavigate()
 
   const { logOutUser } = useContext(AuthContext)
   const { user } = useContext(AuthContext)
-
+  const {userLoggedData} = useContext(UserContext)
   const { clearUserContext } = useContext(UserContext)
 
   useEffect(() => {
@@ -70,9 +71,6 @@ function NavBar() {
               <li className="nav-item me-4">
                 <NavLink className="nav-link" to="/register" >Register</NavLink>
               </li>
-              <li className="nav-item me-4">
-                {/* <NavLink className="nav-link">Career Tip</NavLink> */}
-              </li>
             </ul>
 
           ) : null}
@@ -80,10 +78,13 @@ function NavBar() {
           {showSeekerNav ? (
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-end">
               <li className="nav-item me-4">
-                <a className="nav-link" aria-current="page" href="#">Profile</a>
+                <NavLink className="nav-link"  to="/seeker/home">Home</NavLink>
               </li>
               <li className="nav-item me-4">
-                <li className="nav-link" href="#">Application</li>
+                <NavLink className="nav-link" to="/seeker/profile">Profile</NavLink>
+              </li>
+              <li className="nav-item me-4">
+                <NavLink className="nav-link" to="/seeker/application/" >Application</NavLink>
               </li>
               <li className="nav-item me-4">
                 <a className="nav-link ">Projects</a>
@@ -113,7 +114,9 @@ function NavBar() {
                 </NavLink>
               </li>
               <li className="avatar-recruiter me-4">
-                <NavLink className="avatar-image" to="/recruiter/profile" ><img src={avatardefault} height="46px" /></NavLink>
+                <NavLink className="avatar-image" to="/recruiter/profile" >
+                    <img src={avatardefault} height="46px" />
+                </NavLink>
 
               </li>
               <li className="nav-item me-4">

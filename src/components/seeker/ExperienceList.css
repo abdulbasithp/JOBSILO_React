@@ -1,0 +1,14 @@
+.no-data {
+    min-height: 20vh;
+    background-color: rgb(240, 240, 240);
+    border: 0.5px rgba(246, 135, 38, 0.708) solid;
+    border-radius: 15px;
+    padding-top: 8vh;
+    margin-top: 15px;
+}
+
+.experience-item-row {
+    border-radius: 10px;
+    padding: 15px;
+    background-color: rgb(237, 241, 241);
+}

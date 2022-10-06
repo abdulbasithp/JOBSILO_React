@@ -1,0 +1,52 @@
+[
+    {
+        "id":1,
+        "location":"Chennai"
+    },
+    {
+        "id":2,
+        "location":"Bengalore"
+    },
+    {
+        "id":3,
+        "location":"New Delhi"
+    },
+    {
+        "id":4,
+        "location":"Kochi"
+    },
+    {
+        "id":5,
+        "location":"Thiruvananthapuram"
+    },
+    {
+        "id":6,
+        "location":"Kalkata"
+    },
+    {
+        "id":7,
+        "location":"Pune"
+    },
+    {
+        "id":8,
+        "location":"Hyderabad"
+    },
+    {
+        "id":9,
+        "location":"Jaipur"
+    },
+    {
+        "id":10,
+        "location":"Lucknow"
+    },
+    {
+        "id":11,
+        "location":"Srinager"
+    },
+    {
+        "id":12,
+        "location":"Bhubanesvar"
+    }
+    
+]
+

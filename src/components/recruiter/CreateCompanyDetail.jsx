@@ -127,8 +127,8 @@ function CreateCompanyDetail({ addCompanyDetailFormData, setAddCompanyDetailForm
     const handleSubmit =(e) => {
         e.preventDefault();
         createCompany(addCompanyDetailFormData)
-        .then((response)=> {
-            if (response.status === 201){
+        .then((res)=> {
+            if (res.status === 201){
                 setIsAddCompanyDetail(false);
                 setAddCompanyDetailFormData({
                     company_name: '',
@@ -143,12 +143,20 @@ function CreateCompanyDetail({ addCompanyDetailFormData, setAddCompanyDetailForm
                 })
                 toast.success('New company data added successfully..',{autoClose:1500})
             }
-            else if(response.status === 400){
-                toast.error('There is a problem occurs with data entered. Please check and retry !')
+            else{
+                console.log(Object.values(res.response.data));
+                const msgArray = [];
+                Object.values(res.response.data).forEach((element)=>{
+                    element.forEach((item)=>{
+                        msgArray.push()
+                        toast.error(item,{autoClose:1500})
+                    })
+                })
+                
             }
         })
         .catch((error)=> {
-            console.log();
+            console.log(error);
         })
     }
 console.log(addCompanyDetailFormData);

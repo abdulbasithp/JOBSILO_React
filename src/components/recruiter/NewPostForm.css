@@ -1,0 +1,11 @@
+.specialisation-selected {
+    background-color: white;
+    padding: 5px;
+}
+.specialisation-item {
+    color: rgb(27, 28, 36);
+    border-radius: 5px;
+    margin: 3px;
+    
+    background-color: rgb(250, 222, 188);
+}

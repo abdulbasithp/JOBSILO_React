@@ -14,6 +14,9 @@ import SheduleLayout from './components/recruiter/SheduleLayout';
 import Profile from './components/recruiter/Profile';
 import { UserProvider } from './context/UserContext';
 import CompanyDetailForm from './components/recruiter/CompanyDetailForm';
+import SeekerProfile from './components/seeker/SeekerProfile';
+import JobPostDetail from './components/seeker/JobPostDetail';
+import NewEducationForm from './components/seeker/NewEducationForm';
 
 
 function App() {
@@ -36,6 +39,9 @@ function App() {
 
               <Route path='seeker'>
                 <Route path='home' element={<SeekerHome />} />
+                <Route path='profile' element={<SeekerProfile/>} />
+                <Route path='job/:id' element={<JobPostDetail/>} />
+                <Route path=':seekerId/education/add' element={<NewEducationForm/>}/>
               </Route>
 
               <Route path='recruiter'  >
